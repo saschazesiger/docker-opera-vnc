@@ -15,7 +15,7 @@ screen -wipe 2&>/dev/null
 echo "---Starting Pulseaudio server---"
 pulseaudio -D -vvvvvvv --exit-idle-time=-1
 pkill -f "/opt/scripts/server -audio-port 10000 -port 8081"
-ffmpeg -f alsa -i pulse -f mpegts -codec:a mp2 -ar 44100 -ac 2 -b:a 128k udp://localhost:10000 &
+ffmpeg -f pulse -i default -acodec libopus -strict experimental -f rtp rtsp://127.0.0.1:8554/stream &
 
 
 echo "---Starting TurboVNC server---"
@@ -23,8 +23,6 @@ vncserver -geometry 1024x768 -depth 16 :99 -rfbport 5900 -noxstartup -securityty
 
 echo "---Starting Fluxbox---"
 screen -d -m env HOME=/etc /usr/bin/fluxbox
-
-/opt/scripts/server -audio-port 10000 -port 8081 &
 
 echo "---Starting Opera---"
 cd /browser
