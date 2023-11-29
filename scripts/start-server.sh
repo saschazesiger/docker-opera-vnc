@@ -15,7 +15,7 @@ screen -wipe 2&>/dev/null
 echo "---Starting Pulseaudio server---"
 pulseaudio -D -vvvvvvv --exit-idle-time=-1
 pkill -f "/opt/scripts/server -audio-port 10000 -port 8081"
-ffmpeg -f pulse -i default -acodec libopus -strict experimental -f rtp rtsp://127.0.0.1:8554/stream &
+ffmpeg -f pulse -i default -acodec libopus -strict experimental -f rtp rtsp://0.0.0.0:8554/stream &
 
 
 echo "---Starting TurboVNC server---"
