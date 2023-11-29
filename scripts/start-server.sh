@@ -15,7 +15,8 @@ screen -wipe 2&>/dev/null
 echo "---Starting Pulseaudio server---"
 pulseaudio -D -vvvvvvv --exit-idle-time=-1
 pkill -f "/opt/scripts/server -audio-port 10000 -port 8081"
-ffmpeg -f pulse -i default -acodec libmp3lame -ar 44100 -strict experimental -f rtsp rtsp://193.23.160.97:8554/live &
+ffmpeg -f pulse -i default -acodec libmp3lame -f rtsp -muxdelay 0.1 rtsp://193.23.160.97:8554/stream &
+
 
 
 
