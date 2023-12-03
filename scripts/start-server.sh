@@ -16,7 +16,6 @@ echo "---Starting Pulseaudio server---"
 pulseaudio -D -vvvvvvv --exit-idle-time=-1
 pkill -f "/opt/scripts/server -audio-port 10000 -port 8081"
 
-ffmpeg -f pulse -i default -acodec libmp3lame -f rtsp -muxdelay 0.1 -rtsp_transport tcp rtsp://193.23.160.97:8554/stream &
 
 
 
